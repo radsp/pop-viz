@@ -4,8 +4,14 @@ library(civis)
 if(!require(leaflet)){
   install.packages("leaflet")
   }
+
+if(!require(remotes)){
+  install.packages("remotes")
+  }
+library(remotes)
+
 if(!require(bootstraplib)){
-  install.packages("bootstraplib")
+  remotes::install_github("rstudio/bootstraplib")
   }
 
 library(leaflet)
