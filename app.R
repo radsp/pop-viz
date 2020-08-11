@@ -3,7 +3,7 @@ library(leaflet)
 library(bootstraplib)
 library(civis)
 
-# source("dat-prep.R")
+source("dat-prep.R")
 source("myUI.R")
 source("myServer.R")
 
