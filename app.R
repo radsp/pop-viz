@@ -9,7 +9,7 @@ if(!require(bootstraplib)){
   library(bootstraplib)
 }
 
-libs <- c("leaflet", "bootstraplib", "geojsonio")
+libs <- c("leaflet", "bootstraplib")
 for (i in 1:length(libs)) {
   if(!require(libs[i], character.only = TRUE)){
     install.packages(libs[i])
