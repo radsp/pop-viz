@@ -37,7 +37,7 @@ df_hf <<- data.frame(id = c("cluster_hf_grid3"),
 # hf$txt <- hf_txt
 # geojson_write(hf, lat = "latitude", lon = "longitude", geometry = "point", file = "grid3_health_facilities.geojson")
 
-hf <<- geojson_read("grid3_health_facilities.geojson", what = "sp")
+## hf <<- geojson_read("grid3_health_facilities.geojson", what = "sp")
 
 
 #--------------------------------------------------------------------------------------
