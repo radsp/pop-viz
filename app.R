@@ -1,22 +1,23 @@
 library(shiny)
 library(civis)
-
-if(!require(leaflet)){
-  install.packages("leaflet")
-  }
-
-if(!require(remotes)){
-  install.packages("remotes")
-  }
-library(remotes)
+library(htmlwidgets)
+library(htmltools)
 
 if(!require(bootstraplib)){
+  install.packages("remotes")
   remotes::install_github("rstudio/bootstraplib")
+  library(bootstraplib)
+}
+
+libs <- c("leaflet", "bootstraplib", "geojsonio")
+for (i in 1:length(libs)) {
+  if(!require(libs[i], character.only = TRUE)){
+    install.packages(libs[i])
+    library(libs[i], character.only = TRUE)
   }
+}
 
-library(leaflet)
-library(bootstraplib)
-
+source("get-mdive.R")
 source("dat-prep.R")
 source("myUI.R")
 source("myServer.R")
