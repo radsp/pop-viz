@@ -59,7 +59,7 @@ Datasets included in this dashboard:
                                                                choiceNames = c("Hamlets", "Small Settlements Areas", "Settlements", "Built-up Areas", "Building Pattern"),
                                                                choiceValues = 1:5, selected = NULL),
                                             # tooltip("lshd", "Enter definition of all data"),
-                                            checkboxGroupInput(inputId = "hf", label = h6("Health Facilities"), choiceNames = c("Primary, Secondary & Tertiary (GRID3)"),
+                                            checkboxGroupInput(inputId = "hf", label = h6("Health Facilities"), choiceNames = c("Primary, Secondary & Tertiary"),
                                                                choiceValues = 1, selected = NULL),
                                             checkboxGroupInput(inputId = "bdry", label = h6("Administrative Boundary"), choiceNames = c("State", "LGA", "Ward"),
                                                                choiceValues = c(1, 2, 3),
