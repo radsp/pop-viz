@@ -11,7 +11,7 @@ hfll <- read_civis(116412480)
 hfll$txt <- as.character(hfll$txt)
 
 # # # Directory to save downloaded and unpacked files
-fdir <- "../data_unpacked"
+fdir <- "data_unpacked"
 if(!dir.exists(fdir)) {dir.create(fdir)}
 
 
