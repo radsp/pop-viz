@@ -6,9 +6,12 @@
 f_id <- 116305434
 df_files <- read_civis(f_id, using = readr::read_csv)
 
+# hfll <- readRDS("health_facility.RDS")
+hfll <- read_civis(116412480)
+hfll$txt <- as.character(hfll$txt)
 
-# # Directory to save downloaded and unpacked files
-fdir <- "data_unpacked"
+# # # Directory to save downloaded and unpacked files
+fdir <- "../data_unpacked"
 if(!dir.exists(fdir)) {dir.create(fdir)}
 
 

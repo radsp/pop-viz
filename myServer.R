@@ -18,6 +18,8 @@ server <- function(input, output, session) {
     
   })
   
+  
+  
   # Define inital view location ----------------------------------------------------------------
   lat0 <- 8
   lon0 <- 3.6
@@ -246,41 +248,42 @@ server <- function(input, output, session) {
   
   # Health Facilities -----------------------------------------------------------------------------------
   
-  # observe({
-  #   
-  #   if (is.null(input$hf)) {
-  #     in_hf <- 0
-  #   } else {
-  #     in_hf <- as.numeric(input$hf)
-  #     
-  #     # leafletProxy("out_map") %>%
-  #     #   addSearchFeatures(
-  #     #     targetGroup = "group_hf",
-  #     #     options = searchFeaturesOptions(position = "bottomleft")
-  #     #   )
-  #   }
-  #   
-  #   if (0 %in% in_hf) {
-  #     leafletProxy("out_map") %>%
-  #       clearGroup(group = "group_hf")
-  #   } else {
-  #     for (i in 1:nrow(df_hf)) {
-  #       if ((i %in% in_hf) & (df_hf$on[i] == FALSE)) {
-  #         leafletProxy("out_map") %>%
-  #           addMarkers(data = eval(as.symbol(as.character(df_hf$data[i]))), 
-  #                      clusterId = df_hf$id[i], group = "group_hf",
-  #                      clusterOptions = markerClusterOptions(),
-  #                      popup = ~lapply(txt, htmltools::HTML))
-  #         df_hf$on[i] <- TRUE
-  #       } else {
-  #         leafletProxy("out_map") %>%
-  #           clearMarkerClusters()
-  #         df_hf$on[i] <- FALSE
-  #       }
-  #     }
-  #   }
+  observe({
     
-  # })
+    if (is.null(input$hf)) {
+      in_hf <- 0
+    } else {
+      in_hf <- as.numeric(input$hf)
+      
+      # leafletProxy("out_map") %>%
+      #   addSearchFeatures(
+      #     targetGroup = "group_hf",
+      #     options = searchFeaturesOptions(position = "bottomleft")
+      #   )
+    }
+    
+    if (0 %in% in_hf) {
+      leafletProxy("out_map") %>%
+        clearGroup(group = "group_hf")
+    } else {
+      for (i in 1:nrow(df_hf)) {
+        if ((i %in% in_hf) & (df_hf$on[i] == FALSE)) {
+          leafletProxy("out_map") %>%
+            addMarkers(data = eval(as.symbol(as.character(df_hf$data[i]))), 
+                       clusterId = df_hf$id[i], group = "group_hf",
+                       clusterOptions = markerClusterOptions(),
+                       lng = ~longitude, lat = ~latitude,
+                       popup = ~lapply(txt, htmltools::HTML))
+          df_hf$on[i] <- TRUE
+        } else {
+          leafletProxy("out_map") %>%
+            clearMarkerClusters()
+          df_hf$on[i] <- FALSE
+        }
+      }
+    }
+    
+  })
 
   
 }

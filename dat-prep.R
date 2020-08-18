@@ -21,11 +21,11 @@ df_lshd <<- data.frame(id = c("lyr_hamlet", "lyr_ssa", "lyr_settl", "lyr_bua", "
 df_bdry <<- data.frame(id = c("lyr_state", "lyr_lga", "lyr_wards"),
                        on = c(FALSE, FALSE, FALSE),
                        tile = c("tile_state", "tile_lga", "tile_wards"),
-                       tile_path = paste(fdir, "/", gsub(".tar.gz", "", df_files$fname[1:3]), sep = ""))
+                       tile_path = paste(fdir, "/", gsub(".tar.gz", "", df_files$fname[c(2,1,3)]), sep = ""))
 
-df_hf <<- data.frame(id = c("cluster_hf_grid3"),
+df_hf <<- data.frame(id = c("cluster_hf"),
                      on = c(FALSE),
-                     data = c("hf"))
+                     data = c("hfll"))
 
 
 #--------------------------------------------------------------------------------------
@@ -73,3 +73,6 @@ addLegendCustom <<- function(map, colors, labels, sizes, shapes,
   return(addLegend(map, colors = legend_colors, labels = legend_labels, 
                    opacity = opacity, ...))
 }
+
+
+
