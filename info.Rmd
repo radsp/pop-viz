@@ -1,0 +1,44 @@
+---
+title: "Population and Infrastructure Mapping Tool"
+output: html_document
+---
+
+<h2><b>Population and Infrastructure Mapping Tool</b></h2>
+
+<br/>
+
+<h4> <b>Purpose </b></h4>
+<p></p>
+<p>This dashboard provides a visualization of high-resolution population density (30-meter grid) and residential areas (90-meter grid) based on satellite imageries. The map is currently available for Oyo State, Nigeria. The tool provides recent satellite images of infrastructure (e.g. housing, healthcare, schools) and road networks that enable users to more precisely plan for the delivery of interventions such as IRS, ITN or SMC campaign, the distribution of ACT and RDTs to health facilities, and the roll out of community health workers for integrated community case management (iCCM). 
+</p>
+
+<br/>
+
+<h4> <b>Analytical Questions </b></h4>
+<p></p>
+Visualization in this dashboard aims to answer the following key analytical questions:
+<ol>
+<li>Where are population settlements and structures (residences, health facilities, etc.)</li>
+<li>What is the geographic distribution (estimates) of certain target populations within each country, including children under five and women of reproductive age?</li>
+<li>Where are the health facilities located?</li></ol>
+</ol>
+
+<br/>
+
+<h4> <b>Datasets </b></h4>
+<p></p> 
+Datasets included in this dashboard:
+ 
+  <ul>
+  <li><b>Population density</b> data was retrieved from Facebook Connectivity Lab and Center for International Earth Science Information Network (CIESIN) - Columbia University. In this dashboard, population density is available for children under 5 years age, women of reproductive age (15 - 49 years) and total population. The map was <i>last updated in April 2019</i>. Data has 30-meter resolution and is available through the <a href = "https://data.humdata.org/organization/facebook"> Humanitarian Data Exchange</a></li>
+  <li><b>Residential area</b> data was developed by the Oak Ridge National Lab (ORNL) that was <i>released in April 2018</i>. Below are the layers that are included in the dashboard and their definition:
+  <ul>
+  <li><b>Hamlets</b>: A single family compound or several (less than ten) compounds or 15 sleeping houses in isolation from small settlements or urban areas.</li>
+  <li><b>Small Settlements (SS)</b>: A settled area of permanently inhabited structures and compounds of roughly a few hundred to a few thousand inhabitants, or 15 – 100 structures.  The housing pattern in SSs is an assemblage of family compounds adjoining other similar habitations.</li>
+  <li><b>Built-up Areas</b>: An area of urbanization, with moderately to densely spaced buildings, and a visible grid of streets and blocks. The Built-up Area typically may show a dense, vertically built urban core, with reduced density of habitations toward the outer margins. Buildings typically include significant areas of mixed land-use with residential, commercial, industrial, and government or academic campuses present.  Smaller built-up areas resemble rural village areas with  light to moderate settled concentration of  huts and structures which qualify for collection as an area due to overall size, number of huts and roofed structures within the enclosed limits or extent of the village.</li>
+  </ul>
+  <li><b>Health Facilities</b> datasets were obtained from Nigeria Health Facility Registry (<a href="https://hfr.health.gov.ng/">HFR</a>) and from Geo-Referenced Infrastructure and Demographic Data for Development (<a href="https://grid3.gov.ng">GRID3</a>). Only those facilities that are in operational (HFR) and functional (GRID3) status and have complete latitude and longitude information are included in the visualizations. When the hospital facility icon is clicked, a pop-up will appear displaying the facility name, type (primary/secondary/tertiary) and ownership (public or private). Information on the number of population within 5km radius was derived by extracting the Facebook population data for each 5 km buffer of hospital facility location. Note that although the health facility datasets from both HFR and GRID3 are geo-referenced, we did not validate the locations. </li>
+  <li><b>School</b> data was obtained from <a href="https://grid3.gov.ng">GRID3</a>. Information on each school category (primary/secondary/tertiary/others), sub-type (standard/pre primary/primary/junior/senior/aggregate/adult Education/others), education type (formal/religious/integrated) will be displayed when the icon is clicked. Similar to health facilities dataset, we did not further validate the school locations. </li>
+  </ul>
+
+ Note that since this visualization uses data from different sources with different spatial resolutions, there could be discrepancies when overlaying the datasets. 

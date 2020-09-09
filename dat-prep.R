@@ -8,7 +8,8 @@
 df_pop <<- data.frame(id = c("lyr_pop_all", "lyr_pop_u5", "lyr_pop_women_repr"),
                       on = c(FALSE, FALSE, FALSE),
                       tile = c("tile_pop_all", "tile_pop_u5", "tile_pop_wrepr"),
-                      tile_path = paste(fdir, "/", gsub(".tar.gz", "", df_files$fname[4:6]), sep = ""))
+                      tile_path = paste(fdir, "/", gsub(".tar.gz", "", df_files$fname[4:6]), sep = "")) 
+
 
 df_lshd <<- data.frame(id = c("lyr_hamlet", "lyr_ssa", "lyr_settl", "lyr_bua", "lyr_bp"),
                        on = c(FALSE, FALSE, FALSE, FALSE, FALSE),
@@ -18,26 +19,19 @@ df_lshd <<- data.frame(id = c("lyr_hamlet", "lyr_ssa", "lyr_settl", "lyr_bua", "
                        legend_id = c("lgnd_hamlet", "lgnd_ssa", "lgnd_settl", "lgnd_bua", "lgnd_bp"),
                        tile_path = c(paste(fdir, "/", gsub(".tar.gz", "", df_files$fname[c(8,10,9,7)]), sep = ""), NA))
 
+df_lshd <<- df_lshd[1:4,]
+
 df_bdry <<- data.frame(id = c("lyr_state", "lyr_lga", "lyr_wards"),
                        on = c(FALSE, FALSE, FALSE),
                        tile = c("tile_state", "tile_lga", "tile_wards"),
                        tile_path = paste(fdir, "/", gsub(".tar.gz", "", df_files$fname[c(2,1,3)]), sep = ""))
 
-df_hf <<- data.frame(id = c("cluster_hf"),
-                     on = c(FALSE),
-                     data = c("hfll"))
+df_hfs <<- data.frame(id = c("cluster_hf", "cluster_hfgrid3", "cluster_school"),
+                     on = c(FALSE, FALSE, FALSE),
+                     data = c("hfr", "grid3","school"),
+                     icon = c("medkit", "medkit","book"),
+                     color = c("blue", "red","purple"))
 
-
-#--------------------------------------------------------------------------------------
-# Health facilities geojson data
-#--------------------------------------------------------------------------------------
-
-# hf <<- geojson_read("~/Work/data/grid3/oyo-health-care-facilities-primary-secondary-and-tertiary/geojson/health-care-facilities-primary-secondary-and-tertiary.geojson", what = "sp")
-# hf_txt <- paste("<b>", hf$name, "</b><br/>(", hf$ward_name, ", ", hf$lga_name, ")<br/><i>Type</i>: ", hf$type, "<br/><i>Ownership</i>: ", hf$ownership,  sep = "")
-# hf$txt <- hf_txt
-# geojson_write(hf, lat = "latitude", lon = "longitude", geometry = "point", file = "grid3_health_facilities.geojson")
-
-## hf <<- geojson_read("grid3_health_facilities.geojson", what = "sp")
 
 
 #--------------------------------------------------------------------------------------

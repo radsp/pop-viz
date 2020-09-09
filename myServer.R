@@ -27,24 +27,13 @@ server <- function(input, output, session) {
   
   # Add tile paths as resources ----------------------------------------------------------------
   
-  # addResourcePath("tile_lga", "~/Work/qgis/nga-oyo-outputs/tiles/boundary_lga")
-  # addResourcePath("tile_wards", "~/Work/qgis/nga-oyo-outputs/tiles/boundary_wards")
-  # addResourcePath("tile_state", "~/Work/qgis/nga-oyo-outputs/tiles/boundary_state")
-  # 
-  # addResourcePath("tile_pop_all", "~/Work/qgis/nga-oyo-outputs/tiles/fbpop_allages")
-  # addResourcePath("tile_pop_u5", "~/Work/qgis/nga-oyo-outputs/tiles/fbpop_children_u5")
-  # addResourcePath("tile_pop_wrepr", "~/Work/qgis/nga-oyo-outputs/tiles/fbpop_women_repr_age")
-  # 
-  # addResourcePath("tile_lshd_hamlet", "~/Work/qgis/nga-oyo-outputs/tiles/landscanhd_oyo_hamlet")
-  # addResourcePath("tile_lshd_bua", "~/Work/qgis/nga-oyo-outputs/tiles/landscanhd_oyo_bua")
-  # addResourcePath("tile_lshd_settl", "~/Work/qgis/nga-oyo-outputs/tiles/landscanhd_oyo_settlement")
-  # addResourcePath("tile_lshd_ssa", "~/Work/qgis/nga-oyo-outputs/tiles/landscanhd_oyo_ssa")
+  
   
   for(i in 1:nrow(df_bdry)){
     addResourcePath(as.character(df_bdry$tile[i]), as.character(df_bdry$tile_path[i]))
   }
   
-  for(i in 1:nrow(df_pop)){
+  for(i in 1:3){
     addResourcePath(as.character(df_pop$tile[i]), as.character(df_pop$tile_path[i]))
   }
   
@@ -68,11 +57,6 @@ server <- function(input, output, session) {
       addLayersControl(
         baseGroups = c("OpenStreetMap", "Satellite"),
         options = layersControlOptions(collapsed = FALSE), position = "bottomleft") %>%
-      # hideGroup("Satellite") %>%
-      # addTiles(urlTemplate = "/tile_pop_all/{z}/{x}/{y}.png", layerId = "map_pop")  %>%
-      # addOpacitySlider(layerId = "map_pop") %>%
-      # addGraticule(interval = 5, style = list(color = "grey60", weight = 1)) %>%
-      # addGraticule(layerId = "graticule", interval = 0.1, style = list(color = "red", weight = 1)) %>%
       addScaleBar(position = "bottomright") %>%
       addTiles(urlTemplate ="/tile_pop_all/{z}/{x}/{y}.png", group = "group_pop", layerId = "lyr_pop_all") %>%
       addTiles(urlTemplate = "/tile_state/{z}/{x}/{y}.png", group = "group_bdry", layerId = "lyr_state") %>%
@@ -248,38 +232,30 @@ server <- function(input, output, session) {
   
   # Health Facilities -----------------------------------------------------------------------------------
   
+  
   observe({
     
-    if (is.null(input$hf)) {
-      in_hf <- 0
+    if (is.null(input$hfs)) {
+      in_hfs <- 0
     } else {
-      in_hf <- as.numeric(input$hf)
-      
-      # leafletProxy("out_map") %>%
-      #   addSearchFeatures(
-      #     targetGroup = "group_hf",
-      #     options = searchFeaturesOptions(position = "bottomleft")
-      #   )
+      in_hfs <- as.numeric(input$hfs)
     }
     
-    if (0 %in% in_hf) {
-      leafletProxy("out_map") %>%
-        clearGroup(group = "group_hf")
-    } else {
-      for (i in 1:nrow(df_hf)) {
-        if ((i %in% in_hf) & (df_hf$on[i] == FALSE)) {
-          leafletProxy("out_map") %>%
-            addMarkers(data = eval(as.symbol(as.character(df_hf$data[i]))), 
-                       clusterId = df_hf$id[i], group = "group_hf",
-                       clusterOptions = markerClusterOptions(),
-                       lng = ~longitude, lat = ~latitude,
-                       popup = ~lapply(txt, htmltools::HTML))
-          df_hf$on[i] <- TRUE
-        } else {
-          leafletProxy("out_map") %>%
-            clearMarkerClusters()
-          df_hf$on[i] <- FALSE
-        }
+    leafletProxy("out_map") %>%
+      clearMarkers() %>%
+      clearMarkerClusters()
+    
+    if(!(0 %in% in_hfs)){
+      for(i in in_hfs){
+        leafletProxy("out_map") %>%
+          addAwesomeMarkers(data = eval(as.symbol(as.character(df_hfs$data[i]))),
+                            lng = ~ longitude, lat = ~ latitude,
+                            clusterOptions = markerClusterOptions(),
+                            clusterId = as.character(df_hfs$id[i]),
+                            icon = awesomeIcons(icon = df_hfs$icon[i], library = "fa",
+                                                iconColor = "#ffffff", markerColor = df_hfs$color[i]),
+                            popup = ~ lapply(as.character(txt), htmltools::HTML)
+          )
       }
     }
     
@@ -289,5 +265,5 @@ server <- function(input, output, session) {
 }
 
   
-  
+
   

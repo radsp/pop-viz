@@ -6,12 +6,10 @@
 f_id <- 116305434
 df_files <- read_civis(f_id, using = readr::read_csv)
 
-# hfll <- readRDS("health_facility.RDS")
-hfll <- read_civis(116412480)
-hfll$txt <- as.character(hfll$txt)
+
 
 # # # Directory to save downloaded and unpacked files
-fdir <- "data_unpacked"
+fdir <- "../data_unpacked"
 if(!dir.exists(fdir)) {dir.create(fdir)}
 
 
@@ -23,6 +21,9 @@ for (i in 1:nrow(df_files)) {
   untar(paste(fdir, "/", df_files$fname[i], sep = ""), exdir = fdir)
 }
 
-# myid <- 115449415
-# download_civis(myid, file = paste(fdir, "/all.tar.gz", sep = ""), overwrite = TRUE)
-# untar(paste(fdir, "/all.tar.gz", sep = ""), exdir = fdir)
+
+
+
+hfr <- read_civis(119911207)
+grid3 <- read_civis(119911927)
+school <- read_civis(119910521)
