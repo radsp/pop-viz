@@ -10,12 +10,12 @@ if(!require(remotes)){
   }
 library(remotes)
 
-if(!require(bootstraplib)){
-  remotes::install_github("rstudio/bootstraplib")
+if(!require(bslib)){
+  remotes::install_github("rstudio/bslib")
   }
 
 library(leaflet)
-library(bootstraplib)
+library(bslib)
 
 source("dat-prep.R")
 source("myUI.R")
