@@ -13,19 +13,19 @@ div.outer {
 }
 
 /* Customize fonts */
-/* body, label, input, button, select { 
-  font-family: 'Helvetica Neue', Helvetica;
-  font-weight: 200;
+body, label, input, button, select { 
+  font-family: 'Helvetica Neue', Helvetica; 
+  font-weight: 300;
 }
-h1, h2, h3, h4 { font-weight: 400; }*/
+h1, h2, h3, h4 { font-weight: 400; }
 
 #controls {
   /* Appearance */
   background-color: white;
-  padding: 0 20px 20px 20px;
+  padding: 30px 20px 20px 20px;
   cursor: move;
   /* Fade out while not hovering */
-  opacity: 0.65;
+  opacity: 0.8;
   zoom: 0.9;
   transition: opacity 500ms 1s;
 }
@@ -47,3 +47,26 @@ h1, h2, h3, h4 { font-weight: 400; }*/
 .leaflet-container {
   background-color: white !important;
 }
+
+#llpos{
+  text-align:center;
+  border: 0;
+  padding:2px 0 0 0;
+}
+
+#boxll{
+  background-color: white;
+  opacity: 0.8;
+  padding: 0;
+}
+
+#small_icon{
+  font-size: 12px;
+  padding: 0;
+}
+
+.shiny-notification {
+             position:fixed;
+             top: calc(50%);
+             left: calc(50%);
+             }
