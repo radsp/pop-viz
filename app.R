@@ -3,14 +3,14 @@ library(civis)
 library(htmlwidgets)
 library(htmltools)
 
-# if(!require(bslib)){
-#   install.packages("remotes")
-#   remotes::install_github("rstudio/bslib")
-#   library(bslib)
-# }
+if(!require(bslib)){
+  install.packages("remotes")
+  remotes::install_github("rstudio/bslib")
+  library(bslib)
+}
 
 
-libs <- c("leaflet", "bslib")
+libs <- c("leaflet")
 for (i in 1:length(libs)) {
   if(!require(libs[i], character.only = TRUE)){
     install.packages(libs[i])
