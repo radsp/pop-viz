@@ -1,7 +1,8 @@
-library(shiny)
+install.packages("shiny")
+install.packages("htmltools")
 library(civis)
 library(htmlwidgets)
-library(htmltools)
+
 
 # if(!require(bslib)){
 #   install.packages("remotes")
