@@ -1,5 +1,5 @@
-bs_theme_new(version = "4+3", bootswatch = "lux")
-shinyOptions(bootstraplib = TRUE)
+# bs_theme_new(version = "4+3", bootswatch = "lux")
+# shinyOptions(bootstraplib = TRUE)
 
 ui <- fluidPage(br(), 
                 navbarPage(id = "main_page", title = HTML("POPMAP &nbsp;&nbsp;&nbsp;&nbsp;"), inverse = TRUE,
@@ -7,7 +7,7 @@ ui <- fluidPage(br(),
                  # tags$nav(class="navbar navbar-expand-lg navbar-dark bg-primary"),
 
                  tabPanel("About", tabName = "tab_about", 
-                          bootstrap(),
+                          # bootstrap(),
                           
                           fluidPage(
                             fluidRow(
