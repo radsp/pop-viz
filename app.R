@@ -10,8 +10,8 @@ library(htmlwidgets)
 #   library(bslib)
 # }
 
-install.packages('bslib',repos='http://cran.us.r-project.org')
-library(bslib)
+# install.packages('bslib',repos='http://cran.us.r-project.org')
+# library(bslib)
 
 libs <- c("leaflet")
 for (i in 1:length(libs)) {
