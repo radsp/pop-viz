@@ -14,12 +14,12 @@ if(!dir.exists(fdir)) {dir.create(fdir)}
 
 
 # Unpack and store tiles in the fdir folder
-# for (i in 1:nrow(df_files)) {
-#   download_civis(df_files$id[i],
-#                  file = paste(fdir, "/",df_files$fname[i], sep = ""),
-#                  overwrite = TRUE)
-#   untar(paste(fdir, "/", df_files$fname[i], sep = ""), exdir = fdir)
-# }
+for (i in 1:nrow(df_files)) {
+   download_civis(df_files$id[i],
+                  file = paste(fdir, "/",df_files$fname[i], sep = ""),
+                  overwrite = TRUE)
+  untar(paste(fdir, "/", df_files$fname[i], sep = ""), exdir = fdir)
+ }
 
 
 
